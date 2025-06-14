@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  art-gallery:
+    build: .
+    ports:
+      - "3000:80"
+    container_name: art-gallery-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - art-gallery-network
+
+networks:
+  art-gallery-network:
+    driver: bridge
+
+# Optional: Add volume for persistent data if needed
+# volumes:
+#   art-gallery-data:
